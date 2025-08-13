@@ -8,11 +8,13 @@ media_folder: "assets"
 public_folder: "/assets"
 
 collections:
-  - name: "test"
-    label: "Test Collection"
-    folder: "_posts"
+  - name: "content"
+    label: "Content"
+    folder: "content"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
