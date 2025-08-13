@@ -1,20 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CMS</title>
-  <!-- رابط ثابت وصحيح لنسخة Netlify CMS -->
-  <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم - CMS</title>
+  
+  <!-- Decap CMS (formerly Netlify CMS) -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loading-container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 400px;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .error-message {
+      color: #e74c3c;
+      background: #fdf2f2;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #e74c3c;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Loading CMS…</h1>
+  <div class="loading-container">
+    <h1>جاري تحميل لوحة التحكم...</h1>
+    <div class="spinner"></div>
+    <p>يرجى الانتظار قليلاً</p>
+  </div>
+
   <script>
-    if (typeof CMS !== 'undefined') {
-      CMS.init();
-    } else {
-      console.error("Netlify CMS script failed to load");
-      document.querySelector("h1").innerText = "Failed to load CMS. Check the console for errors.";
+    // التحقق من تحميل Decap CMS
+    function initializeCMS() {
+      if (typeof DecapCMS !== 'undefined') {
+        console.log('Decap CMS تم تحميله بنجاح');
+        
+        // إخفاء شاشة التحميل
+        document.querySelector('.loading-container').style.display = 'none';
+        
+        // تهيئة CMS
+        DecapCMS.init();
+        
+        // إضافة بعض التخصيصات إذا لزم الأمر
+        DecapCMS.registerPreviewStyle('/assets/css/admin-preview.css');
+        
+      } else if (typeof CMS !== 'undefined') {
+        // للإصدارات الأقدم من Netlify CMS
+        console.log('Netlify CMS تم تحميله بنجاح');
+        document.querySelector('.loading-container').style.display = 'none';
+        CMS.init();
+        
+      } else {
+        // في حالة فشل التحميل
+        console.error("فشل في تحميل CMS");
+        document.querySelector('h1').innerText = "حدث خطأ في تحميل النظام";
+        document.querySelector('.spinner').style.display = 'none';
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.innerHTML = `
+          <strong>خطأ:</strong> لم يتم تحميل نظام إدارة المحتوى بشكل صحيح.<br>
+          يرجى التحقق من:
+          <ul style="text-align: right; margin-top: 10px;">
+            <li>الاتصال بالإنترنت</li>
+            <li>إعدادات Git Gateway في Netlify</li>
+            <li>ملف config.yml</li>
+          </ul>
+        `;
+        document.querySelector('.loading-container').appendChild(errorDiv);
+      }
     }
+
+    // انتظار تحميل الصفحة ثم تهيئة CMS
+    window.addEventListener('load', function() {
+      setTimeout(initializeCMS, 1000);
+    });
   </script>
 </body>
 </html>
