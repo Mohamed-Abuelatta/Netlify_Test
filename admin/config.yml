@@ -2,36 +2,17 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
-
 site_url: "https://tartil-quran.netlify.app"
 
+media_folder: "assets"
+public_folder: "/assets"
+
 collections:
-  - name: "settings"
-    label: "إعدادات الموقع"
-    files:
-      - file: "data/site.json"
-        label: "إعدادات عامة"
-        name: "site_settings"
-        fields:
-          - { label: "عنوان الموقع", name: "title", widget: "string" }
-          - { label: "وصف الموقع", name: "description", widget: "text" }
-          - { label: "اللوجو", name: "logo", widget: "image", required: false }
-          
-  - name: "content"
-    label: "المحتوى"
-    files:
-      - file: "data/homepage.json"
-        label: "الصفحة الرئيسية"
-        name: "homepage"
-        fields:
-          - { label: "العنوان الرئيسي", name: "main_title", widget: "string" }
-          - { label: "النص التعريفي", name: "intro_text", widget: "markdown" }
-          - label: "الأقسام"
-            name: "sections"
-            widget: "list"
-            fields:
-              - { label: "عنوان القسم", name: "title", widget: "string" }
-              - { label: "محتوى القسم", name: "content", widget: "markdown" }
-              - { label: "صورة القسم", name: "image", widget: "image", required: false }
+  - name: "test"
+    label: "Test Collection"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
