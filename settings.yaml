@@ -1,0 +1,6 @@
+# إعدادات التطبيق
+site_name: "Tartil"
+admin_email: "mr.mohamed.abuelatta@gmail.com"
+features:
+  - dashboard
+  - basic_auth
