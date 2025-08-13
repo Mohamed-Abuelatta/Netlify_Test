@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>CMS</title>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <!-- رابط ثابت وصحيح لنسخة Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
 </head>
 <body>
   <script>
-    CMS.init();
+    if (typeof CMS !== 'undefined') {
+      CMS.init();
+    } else {
+      console.error("Netlify CMS script failed to load");
+    }
   </script>
 </body>
 </html>
