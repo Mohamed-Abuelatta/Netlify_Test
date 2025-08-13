@@ -5,13 +5,15 @@ backend:
 media_folder: "assets"
 public_folder: "/assets"
 
+site_url: "https://tartil-quran.netlify.app"
+
 collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "content/index.html"
+      - file: "index.html"    # تم نقل الملف للجذر
         label: "Home Page"
         name: "home"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "body", widget: "markdown" }
+          - { label: "Content", name: "body", widget: "html" }  # HTML بدل Markdown
