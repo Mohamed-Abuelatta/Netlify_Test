@@ -6,20 +6,20 @@ site_url: "https://tartil-quran.netlify.app"
 
 media_folder: "assets"
 public_folder: "/assets"
-
 collections:
   - name: "content"
     label: "Content"
     folder: "content"
     create: true
-    extension: "html"
-    format: "frontmatter"
-    # identifier_field: title
-    slug: "{{title}}"
-    editor:
-      preview: false
+    extension: "html"         
+    format: "frontmatter"      
+    identifier_field: title      
+    slug: "{{slug}}"
     fields:
       - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Date", name: "date", widget: "datetime", required: false, default: "{{date}}" }
-      - { label: "Body (HTML)", name: "body", widget: "code", default_language: "html", required: false, default: "" }
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Body (HTML)"
+        name: "body"
+        widget: "markdown"
+        hint: "يمكنك كتابة HTML و Markdown هنا"
+        modes: ['raw']  # يُظهر الكود الخام
