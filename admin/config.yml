@@ -73,10 +73,11 @@ collections:
     folder: "content/blog"          
     create: true
     extension: "html"         
-    format: "frontmatter"      
+    format: "frontmatter"    
     identifier_field: title      
-    slug: "blog-{{slug}}"           
+    slug: "blog-{{fields.short_id}}"
     fields:
+      - { label: "Short ID", name: "short_id", widget: "hidden", default: "{{uuid_short}}" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }  # تاريخ المقال
       - { label: "Tags", name: "tags", widget: "list", required: false }  # تاجات
