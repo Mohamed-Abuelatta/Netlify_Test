@@ -12,7 +12,15 @@ collections:
     label: "Content"
     folder: "content"
     create: true
+    extension: "html"          # نحفظ كـ .html
+    format: "frontmatter"      # Frontmatter + body
+    identifier_field: id       # أو id لو تحب
     slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      #- {label: "Title", name: "title", widget: "string"}
+      #- {label: "Body", name: "body", widget: "markdown"}
+      - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body (HTML)", name: "body", widget: "code", default_language: "html" }
+
+      
