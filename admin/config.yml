@@ -12,9 +12,9 @@ collections:
     label: "Content"
     folder: "content"
     create: true
-    format: "json"
-    extension: "json"
+    format: "frontmatter"
+    extension: "html"
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "code", default_language: "html"}
