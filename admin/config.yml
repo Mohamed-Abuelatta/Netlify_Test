@@ -6,7 +6,51 @@ site_url: "https://tartil-quran.netlify.app"
 
 media_folder: "assets"
 public_folder: "/assets"
+
+# publish_mode: editorial_workflow
+# site_name: "Tartil Quran"
+# site_description: "تطبيق تلاوة القرآن الكريم بتقنية التكرار المتسلسل"
+# site_icon: "/assets/favicon.png"
+# site_logo: "/assets/logo.png"
+# site_author: "Tartil Quran Team"
+# site_author_url: "https://tartil-quran.netlify.app"
+# site_author_email: "لةشهم"
+# site_language: "ar"
+# site_keywords: ["قرآن", "تلاوة", "تكرار", "تعلم", "تعليم", "تطبيق", "مصحف"]
+# site_social:
+#   twitter: "https://twitter.com/tartil_quran"
+#   facebook: "https://www.facebook.com/tartilquran"
+#   instagram: "https://www.instagram.com/tartil_quran"
+#   youtube: "https://www.youtube.com/channel/UCtartilquran"
+# site_footer: "© 2023 Tartil Quran. All rights reserved."
+# site_footer_links:
+#   - label: "Privacy Policy"
+#     url: "/privacy-policy"
+#   - label: "Terms of Service"
+#     url: "/terms-of-service"
+# site_footer_copyright: "© 2023 Tartil Quran. All rights reserved."
+# site_footer_social:
+#   - icon: "twitter"
+#     url: "https://twitter.com/tartil_quran"
+#   - icon: "facebook"
+#     url: "https://www.facebook.com/tartilquran"
+#   - icon: "instagram"
+#     url: "https://www.instagram.com/tartil_quran"
+#   - icon: "youtube"
+#     url: "https://www.youtube.com/channel/UCtartilquran"
+# site_footer_address: "123 Quran Street, City, Country"
+# site_footer_phone: "+123 456 7890"
+# site_footer_email: "Email@gmail.com"
+# site_footer_hours: "Mon-Fri: 9am - 5pm, Sat-Sun: Closed"
+# site_footer_map_title: "Find us on the map"
+# site_footer_map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.123456789012!2d-122.12345678901234!3d37.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085801234567890%3A0x1234567890123456!2sTartil%20Quran%20Office!5e0!3m2!1sen!2sus!4v1234567890123456"
+# site_footer_address_map: "https://www.google.com/maps/place/Tartil+Quran/@37.123456789012345,-122.12345678901234,15z/data=!4m5!3m4!1s0x8085801234567890:0x1234567890123456!8m2!3d37.123456789012345!4d-122.12345678901234"
+# site_footer_address_phone: "+123 456 7890"
+# site_footer_address_email: "ثةشهم"
+# site_footer_address_hours: "Mon-Fri: 9am - 5pm, Sat-Sun: Closed"
+
 collections:
+  # المحتوى العام (كما هو)
   - name: "content"
     label: "Content"
     folder: "content"
@@ -16,10 +60,28 @@ collections:
     identifier_field: title      
     slug: "{{slug}}"
     fields:
-      - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
       - { label: "Title", name: "title", widget: "string" }
       - label: "Body (HTML)"
         name: "body"
         widget: "markdown"
         hint: "يمكنك كتابة HTML و Markdown هنا"
-        modes: ['raw']  # يُظهر الكود الخام
+        modes: ["rich_text", "raw"]
+
+  # البلوج الجديد
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"          
+    create: true
+    extension: "html"         
+    format: "frontmatter"      
+    identifier_field: title      
+    slug: "blog-{{slug}}"           
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }  # تاريخ المقال
+      - { label: "Tags", name: "tags", widget: "list", required: false }  # تاجات
+      - label: "Body (HTML)"
+        name: "body"
+        widget: "markdown"
+        hint: "محتوى مقال البلوج"
+        modes: ["rich_text", "raw"]
