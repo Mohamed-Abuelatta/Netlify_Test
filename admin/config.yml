@@ -77,7 +77,6 @@ collections:
     identifier_field: title      
     slug: "blog-{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}"
     fields:
-      - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }  # تاريخ المقال
       - { label: "Tags", name: "tags", widget: "list", required: false }  # تاجات
