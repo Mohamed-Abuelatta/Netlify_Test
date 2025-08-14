@@ -14,11 +14,11 @@ collections:
     create: true
     extension: "html"
     format: "frontmatter"
-    identifier_field: id
     slug: "{{title}}"
     editor:
       preview: false
     fields:
       - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
       - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Body (HTML)", name: "body", widget: "code", default_language: "html", preview: false }
+      - { label: "Body (HTML)", name: "body", widget: "code", default_language: "html", preview: false, required: false, default: "" }
+      - { label: "Date", name: "date", widget: "datetime", required: false, default: "{{date}}" }
