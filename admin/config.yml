@@ -75,8 +75,9 @@ collections:
     extension: "html"         
     format: "frontmatter"    
     identifier_field: title      
-    slug: "blog-{{uuid_short}}"
+    slug: "blog-{{fields.id}}"
     fields:
+      - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }  # تاريخ المقال
       - { label: "Tags", name: "tags", widget: "list", required: false }  # تاجات
