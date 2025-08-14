@@ -22,9 +22,4 @@ collections:
       - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Date", name: "date", widget: "datetime", required: false, default: "{{date}}" }
-      - label: "Body (HTML)"
-        name: "body"
-        widget: "code"
-        default_language: "html"
-        required: false
-        default: ""
+      - { label: "Body (HTML)", name: "body", widget: "code", default_language: "html", required: false, default: "" }
