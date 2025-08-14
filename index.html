@@ -33,6 +33,14 @@
         <div
           hx-get="content/home.html"
           hx-trigger="load"
+          hx-target="#html-content"
+          hx-swap="innerHTML">
+          <div id="html-content"></div>
+        </div>
+        <hr />
+        <div
+          hx-get="content/about.html"
+          hx-trigger="load"
           hx-target="#markdown-content"
           hx-swap="innerHTML">
           <div id="markdown-content"></div>
