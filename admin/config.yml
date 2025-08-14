@@ -75,7 +75,7 @@ collections:
     extension: "html"         
     format: "frontmatter"    
     identifier_field: title      
-    slug: "blog-{{fields.id}}"
+    slug: "blog-{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}"
     fields:
       - { label: "ID", name: "id", widget: "hidden", default: "{{uuid}}" }
       - { label: "Title", name: "title", widget: "string" }
